@@ -1,0 +1,22 @@
+---
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: db-petclinic
+  namespace: apps
+spec:
+  teamId: db
+  volume:
+    size: 100Mi
+  numberOfInstances: 1
+  users:
+    # database owner
+    petclinic:
+    - superuser
+    - createdb
+
+  #databases: name->owner
+  databases:
+    db_petclinic: petclinic
+  postgresql:
+    version: "15"

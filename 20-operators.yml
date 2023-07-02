@@ -1,0 +1,37 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: cert-manager
+  namespace: pki
+spec:
+  repo: https://charts.jetstack.io
+  chart: cert-manager
+  targetNamespace: pki
+  valuesContent: |-
+    installCRDs: true
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: victoria-metrics-operator
+  namespace: grafana
+spec:
+  repo: https://victoriametrics.github.io/helm-charts/
+  chart: victoria-metrics-operator
+  targetNamespace: grafana
+  valuesContent: |-
+    admissionWebhooks:
+      enabled: true
+      certManager:
+        enabled: true
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: postgres-operator
+  namespace: postgres-operator
+spec:
+  repo: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+  chart: postgres-operator
+  targetNamespace: postgres-operator
