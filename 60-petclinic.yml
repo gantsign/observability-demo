@@ -146,7 +146,7 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: kubernetes,postgres
         - name: POSTGRES_URL
-          value: jdbc:postgresql://db-petclinic/db_petclinic?sslmode=require
+          value: jdbc:postgresql://db-petclinic.apps.svc.cluster.local/db_petclinic?sslmode=require
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
@@ -263,7 +263,7 @@ data:
             <collectionProp name="Arguments.arguments">
               <elementProp name="PETCLINIC_HOST" elementType="Argument">
                 <stringProp name="Argument.name">PETCLINIC_HOST</stringProp>
-                <stringProp name="Argument.value">app-petclinic</stringProp>
+                <stringProp name="Argument.value">app-petclinic.apps.svc.cluster.local</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="PETCLINIC_PORT" elementType="Argument">
