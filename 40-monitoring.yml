@@ -28,7 +28,7 @@ spec:
     tempo:
       metricsGenerator:
         enabled: true
-        remoteWriteUrl: http://prometheus-server/api/v1/write
+        remoteWriteUrl: http://prometheus-server.grafana.svc.cluster.local/api/v1/write
 ---
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
@@ -99,7 +99,7 @@ spec:
           uid: prometheus
           access: proxy
           orgId: 1
-          url: http://prometheus-server
+          url: http://prometheus-server.grafana.svc.cluster.local
           basicAuth: false
           isDefault: false
           version: 1
